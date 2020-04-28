@@ -36,6 +36,11 @@
        }).catch(e =>{
             console.log("最后出错了，原因："+e.message);
           });
+      
+      //测试是否先于异步图片显示
+      let e2=document.createElement("p");
+          e2.textContent="的大幅度反对法大幅度反对法";
+          document.body.appendChild(e2);
     </script>
   </body>
 </html>
