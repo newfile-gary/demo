@@ -10,7 +10,7 @@
           return fetch(url).then(response=>{
             if(type==="text"){
               return response.text();
-            }else if(type==="bolb"){
+            }else if(type==="blob"){
               return response.blob();
             }
           }).catch(e =>{
