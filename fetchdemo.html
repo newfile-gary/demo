@@ -18,8 +18,8 @@
           });
        }
 
-       var img=fetch("coffee.jpg", "blob");
-       var text=fetch("decoration.txt","text");
+       var img=fetchObject("coffee.jpg", "blob");
+       var text=fetchObject("decoration.txt","text");
 
        var promise1=Promise.all([img,text]).then(values=>{
           console.log(values);
