@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple XHR async callback example</title>
+  </head>
+  <body>
+    <script>
+       function fetchObject(url, type){
+          return fetch(url).then(response=>{
+            if(type==="text"){
+              return response.text();
+            }else if(type==="bolb"){
+              return response.blob();
+            }
+          }).catch(e =>{
+            console.log("出错了，原因："+e.message);
+          });
+       }
+
+       var img=fetch("coffee.jpg", "blob");
+       var text=fetch("decoration.txt","text");
+
+       var promise1=Promise.all([img,text]).then(values=>{
+          console.log(values);
+          let obj1=URL.createObjectURL(values[0]);
+          let obj2=values[1];
+
+          let e1=document.createElement("img");
+          e1.src=obj1;
+          document.body.appendChild(e1);
+
+          let e2=document.createElement("p");
+          e2.textContent=obj2;
+          document.body.appendChild(e2);
+       }).catch(e =>{
+            console.log("最后出错了，原因："+e.message);
+          });
+    </script>
+  </body>
+</html>
