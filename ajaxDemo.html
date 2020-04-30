@@ -73,7 +73,7 @@
             let url=value+".txt";
             let promies=fetch(url);
             promies.then(
-               function(){
+               function(response){
                     pre.textContent=response.text();
                }
             ).catch(
