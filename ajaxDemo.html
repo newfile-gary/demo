@@ -72,9 +72,11 @@
             value=value.toLowerCase();
             let url=value+".txt";
             let promies=fetch(url);
-            promies.then(
-               function(response){
-                    pre.textContent=response.text();
+             promies.then(
+                function(response){return response.text();}
+            ).then(
+               function(text){
+                    pre.textContent=text;
                }
             ).catch(
                 function(e){
