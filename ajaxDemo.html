@@ -70,14 +70,24 @@
         function updatePre(value){
             value=value.replace(" ","");
             value=value.toLowerCase();
-            let formateValue=value+".txt";
-            let request=new XMLHttpRequest();
-            request.open("GET",formateValue);
-            request.responseType="text";
-            request.onload=function(){
-                pre.textContent=request.response;
-            }
-            request.send();
+            let url=value+".txt";
+            let promies=fetch(url);
+            promies.then(
+               function(){
+                    pre.textContent=response.text();
+               }
+            ).catch(
+                function(e){
+                    console.log("出错了"+e.message);
+                }
+            );
+            // let request=new XMLHttpRequest();
+            // request.open("GET",url);
+            // request.responseType="text";
+            // request.onload=function(){
+            //     pre.textContent=request.response;
+            // }
+            // request.send();
         }
       updatePre(select.value);
     </script>
